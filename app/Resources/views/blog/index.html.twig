@@ -1,0 +1,17 @@
+{%extends 'blog/layout.html.twig'%}
+
+{% block title %} 
+{{ parent() }} -
+Index {% endblock %} 
+{%block body%}
+
+<h1>Liste des articles</h1>
+<ul>
+	{% for article in articles %}
+	<li>{{article.titre}}</li> 
+	{%if article.image is defined%}
+	<img src="{{article.image}}"></img> 
+	{%endif%}
+	{%endfor%}
+</ul>
+<{%endblock%}
