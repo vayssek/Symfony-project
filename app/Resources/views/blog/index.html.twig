@@ -9,8 +9,9 @@ Index {% endblock %}
 <ul>
 	{% for article in articles %}
 	<li>{{article.titre}}</li> 
-	{%if article.image is defined%}
-	<img src="{{article.image}}"></img> 
+	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>
+	{%if article.image is not null%}
+	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> 
 	{%endif%}
 	{%endfor%}
 </ul>

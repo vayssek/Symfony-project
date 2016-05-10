@@ -15,8 +15,8 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9651cffd699a302b75b289e84b329c277f2479c55864c70b7aa4f2c90d518f4c = $this->env->getExtension("native_profiler");
-        $__internal_9651cffd699a302b75b289e84b329c277f2479c55864c70b7aa4f2c90d518f4c->enter($__internal_9651cffd699a302b75b289e84b329c277f2479c55864c70b7aa4f2c90d518f4c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
+        $__internal_c11819c578abd37735b005aac6d45362631f0f3061037b710b56db624d52ce4d = $this->env->getExtension("native_profiler");
+        $__internal_c11819c578abd37735b005aac6d45362631f0f3061037b710b56db624d52ce4d->enter($__internal_c11819c578abd37735b005aac6d45362631f0f3061037b710b56db624d52ce4d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
 
         // line 1
         echo "<article>
@@ -34,10 +34,18 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
         // line 6
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "date", array()), "d-m-Y"), "html", null, true);
         echo "</em>
+\t<a class=\"btn bnt-warning\" href=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_supprimer", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
+        echo "\">Supprimer article &rarr;</a>
+\t<a class=\"btn bnt-warning\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_modif", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
+        echo "\">Modifier article &rarr;</a>
 </p>
 </article>";
         
-        $__internal_9651cffd699a302b75b289e84b329c277f2479c55864c70b7aa4f2c90d518f4c->leave($__internal_9651cffd699a302b75b289e84b329c277f2479c55864c70b7aa4f2c90d518f4c_prof);
+        $__internal_c11819c578abd37735b005aac6d45362631f0f3061037b710b56db624d52ce4d->leave($__internal_c11819c578abd37735b005aac6d45362631f0f3061037b710b56db624d52ce4d_prof);
 
     }
 
@@ -53,7 +61,7 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 
     public function getDebugInfo()
     {
-        return array (  35 => 6,  31 => 5,  26 => 3,  22 => 1,);
+        return array (  43 => 8,  39 => 7,  35 => 6,  31 => 5,  26 => 3,  22 => 1,);
     }
 }
 /* <article>*/
@@ -62,5 +70,7 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 /* </h1>*/
 /* <p>{{article.contenu}}<br>*/
 /* <em>{{article.date|date('d-m-Y')}}</em>*/
+/* 	<a class="btn bnt-warning" href="{{ path('blog_supprimer',{id:article.id})}}">Supprimer article &rarr;</a>*/
+/* 	<a class="btn bnt-warning" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>*/
 /* </p>*/
 /* </article>*/

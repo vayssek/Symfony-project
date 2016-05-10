@@ -4,5 +4,7 @@
 </h1>
 <p>{{article.contenu}}<br>
 <em>{{article.date|date('d-m-Y')}}</em>
+	<a class="btn bnt-warning" href="{{ path('blog_supprimer',{id:article.id})}}">Supprimer article &rarr;</a>
+	<a class="btn bnt-warning" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>
 </p>
 </article>

@@ -5,6 +5,14 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Article;
+use Doctrine\DBAL\Driver\PDOException;
+use AppBundle\Entity\Image;
+/**
+ * 
+ * @Route {"/blog"}
+ *
+ */
 
 class BlogController extends Controller {
 	/**
@@ -13,26 +21,9 @@ class BlogController extends Controller {
 	 */
 	public function indexAction(Request $request, $page) {
 		// replace this example code with whatever you need
-		$articles = [[
-				'page' => 1,
-				'titre' => "Nouvelle article",
-				'contenu' => "Commencez à écrire",
-				'date' => new \DateTime (),
-				'image'=>'https://media.giphy.com/media/pD0mWWXxbd3gI/giphy.gif',
-				//'image'=>'https://www.buzz2000.com/coloriage/fairy-tail-happy/coloriage-fairy-tail-happy-10098.png',
-		],
-		[
-		'page' => 2,
-		'titre' => "Nouvelle article",
-		'contenu' => "Commencez à écrire",
-		'date' => new \DateTime ()
-		],
-		[ 
-				'page' => 3,
-				'titre' => "Nouvelle article",
-				'contenu' => "Commencez à écrire",
-				'date' => new \DateTime () 
-		]];
+		
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$articles=$repA->findAll();
 		return $this->render ( 'blog/index.html.twig', [ 
 				'articles' => $articles,
 				'base_dir' => realpath ( $this->getParameter ( 'kernel.root_dir' ) . '/..' ) 
@@ -44,57 +35,86 @@ class BlogController extends Controller {
 	 * )
 	 */
 	public function detailAction(Request $request, $id) {
-		$article = [ 
-				'id' => $id,
-				'titre' => "Nouvelle article",
-				'contenu' => "Commencez à écrire",
-				'date' => new \DateTime () 
-		];
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$article=$repA->find($id);
 		return $this->render ( 'blog/detail.html.twig', [ 
 				'article' => $article 
 		] );
 	}
 	/**
-	 * @Route("/blog/modification/{modif}",name="blog_modif", requirements={"modif":"\d+"})
+	 * @Route("/blog/modification/{id}",name="blog_modif", defaults={"id":1}, requirements={"id":"\d+"})
 	 * )
 	 */
-	public function modifAction(Request $request, $modif) {
+	public function modifAction(Request $request, $id) {
+		$em=$this->getDoctrine()->getManager();
+		$repA=$em->getRepository('AppBundle:Article');
+		$article=$repA->find($id);
+		
+		$article->setTitre('Update - '.$article->getTitre());
+		$em->flush();
 		return $this->render ( 'blog/modification.html.twig', [ 
-				'modif' => $modif 
+				'id' => $id
 		] );
 	}
 	
 	/**
-	 * @Route("/blog/ajout/{ajout}",name="blog_ajout", requirements={"ajout":"\d+"})
+	 * @Route("/blog/ajout/{id}",name="blog_ajout",defaults={"id":1}, requirements={"id":"\d+"})
 	 * )
 	 */
-	public function ajoutAction(Request $request, $ajout) {
-		return $this->render ( 'blog/modification.html.twig', [
-				'ajout' => $ajout
-		] );
+	public function ajouterAction(Request $request,$id) {
+		$article =new Article();
+		$article->setAuteur('moi');
+		$article->setContenu('Whoa, ça ressemble a ça !');
+		//$article->setDate($date);
+		//$article->setPublication($publication);
+		$article->setTitre('Hello World !');
+		
+		$image =new Image();
+		$image-> setUrl('http://vignette4.wikia.nocookie.net/fairy-tail/images/c/c5/Fro_GMG.png/revision/latest?cb=20130105210355&path-prefix=fr');
+		$image->setAlt('Mon image');
+		
+		$article->setImage($image);
+		
+		$em=$this->getDoctrine()->getManager();
+		$em->persist($article);
+		try {
+			$em->flush();
+			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
+		}
+			catch (\PDOException $e) {
+			
+		}
+	
+		
+		return $this->render ( 'blog/ajout.html.twig', [
+		'article'=>$article,]);
+	}
+	
+	/**
+	 * @Route("/blog/supprimer/{id}",name="blog_supprimer",defaults={"id":1}, requirements={"id":"\d+"})
+	 * )
+	 */
+	public function supprimerAction(Request $request,$id) {
+		$em=$this->getDoctrine()->getManager();
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		
+		$article=$repA->find($id);
+		$em->remove($article);
+		
+		try {
+			$em->flush();
+		}
+		catch (\PDOException $e) {
+				
+		}
+		return $this->render ( 'blog/supprimer.html.twig', [
+				'id'=>$id
+		]);
 	}
 	
 	public function footerAction(Request $request) {
-		$articles = [[
-				'page' => 1,
-				'titre' => "Nouvelle article",
-				'contenu' => "Commencez à écrire",
-				'date' => new \DateTime (),
-				'image'=>'https://media.giphy.com/media/pD0mWWXxbd3gI/giphy.gif',
-				//'image'=>'https://www.buzz2000.com/coloriage/fairy-tail-happy/coloriage-fairy-tail-happy-10098.png',
-		],
-				[
-						'page' => 2,
-						'titre' => "Nouvelle article",
-						'contenu' => "Commencez à écrire",
-						'date' => new \DateTime ()
-				],
-				[
-						'page' => 3,
-						'titre' => "Nouvelle article",
-						'contenu' => "Commencez à écrire",
-						'date' => new \DateTime ()
-				]];
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$articles=$repA->findBy(['publication'=>true],array('date'=>'desc'),3,0);
 		return $this->render ( 'blog/footer.html.twig', [
 				'articles' => $articles,
 				]);

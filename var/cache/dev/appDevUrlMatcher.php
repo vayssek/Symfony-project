@@ -112,13 +112,18 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // blog_modif
-            if (0 === strpos($pathinfo, '/blog/modification') && preg_match('#^/blog/modification/(?P<modif>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modif')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::modifAction',));
+            if (0 === strpos($pathinfo, '/blog/modification') && preg_match('#^/blog/modification(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modif')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifAction',));
             }
 
             // blog_ajout
-            if (0 === strpos($pathinfo, '/blog/ajout') && preg_match('#^/blog/ajout/(?P<ajout>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_ajout')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::ajoutAction',));
+            if (0 === strpos($pathinfo, '/blog/ajout') && preg_match('#^/blog/ajout(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_ajout')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::ajouterAction',));
+            }
+
+            // blog_supprimer
+            if (0 === strpos($pathinfo, '/blog/supprimer') && preg_match('#^/blog/supprimer(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_supprimer')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::supprimerAction',));
             }
 
         }

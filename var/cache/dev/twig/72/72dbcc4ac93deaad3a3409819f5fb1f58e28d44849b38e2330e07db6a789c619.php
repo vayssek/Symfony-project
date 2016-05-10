@@ -15,8 +15,8 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_49b75bc93c8cc98f0afabd66a336546a683a31dd219ad6c04c5d9b8df7276f62 = $this->env->getExtension("native_profiler");
-        $__internal_49b75bc93c8cc98f0afabd66a336546a683a31dd219ad6c04c5d9b8df7276f62->enter($__internal_49b75bc93c8cc98f0afabd66a336546a683a31dd219ad6c04c5d9b8df7276f62_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/footer.html.twig"));
+        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a = $this->env->getExtension("native_profiler");
+        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a->enter($__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/footer.html.twig"));
 
         // line 1
         echo "<h1>Derniers articles</h1>
@@ -29,13 +29,17 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
             echo "\t<li>";
             echo twig_escape_filter($this->env, $this->getAttribute($context["article"], "titre", array()), "html", null, true);
             echo "</li> 
+\t\t<a class=\"btn bnt-warning\" href=\"";
+            // line 4
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_detail", array("id" => $this->getAttribute($context["article"], "id", array()))), "html", null, true);
+            echo "\">Voir &rarr;</a>
 \t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_49b75bc93c8cc98f0afabd66a336546a683a31dd219ad6c04c5d9b8df7276f62->leave($__internal_49b75bc93c8cc98f0afabd66a336546a683a31dd219ad6c04c5d9b8df7276f62_prof);
+        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a->leave($__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a_prof);
 
     }
 
@@ -51,10 +55,11 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
 
     public function getDebugInfo()
     {
-        return array (  29 => 3,  25 => 2,  22 => 1,);
+        return array (  34 => 4,  29 => 3,  25 => 2,  22 => 1,);
     }
 }
 /* <h1>Derniers articles</h1>*/
 /* {% for article in articles %}*/
 /* 	<li>{{article.titre}}</li> */
+/* 		<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>*/
 /* 	{% endfor %}*/
