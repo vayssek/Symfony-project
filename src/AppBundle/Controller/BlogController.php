@@ -37,9 +37,12 @@ class BlogController extends Controller {
 	 */
 	public function detailAction(Request $request, $id) {
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$repC=$this->getDoctrine()->getManager()->getRepository('AppBundle:Commentaire');
 		$article=$repA->find($id);
+		$commentaires=$repC->findBy(['article'=>$article],array('date'=>'desc'),3,0);
 		return $this->render ( 'blog/detail.html.twig', [ 
-				'article' => $article 
+				'article' => $article ,
+				'commentaires'=>$commentaires
 		] );
 	}
 	/**
