@@ -133,28 +133,5 @@ class Commentaire
     {
         return $this->date;
     }
-
-    /**
-     * Set article
-     *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return Commentaire
-     */
-    public function setArticle(\AppBundle\Entity\Article $article)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \AppBundle\Entity\Article
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
 }
+
