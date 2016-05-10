@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Article;
 use Doctrine\DBAL\Driver\PDOException;
 use AppBundle\Entity\Image;
+use AppBundle\Entity\Commentaire;
 /**
  * 
  * @Route {"/blog"}
@@ -65,8 +66,6 @@ class BlogController extends Controller {
 		$article =new Article();
 		$article->setAuteur('moi');
 		$article->setContenu('Whoa, ça ressemble a ça !');
-		//$article->setDate($date);
-		//$article->setPublication($publication);
 		$article->setTitre('Hello World !');
 		
 		$image =new Image();
@@ -75,8 +74,22 @@ class BlogController extends Controller {
 		
 		$article->setImage($image);
 		
+		$commentaire1= new Commentaire();
+		$commentaire1->setArticle($article);
+		$commentaire1->setAuteur('Happy');
+		$commentaire1->setContenu('Tu aimes le poisson, moi oui !');
+		
+		$commentaire2= new Commentaire();
+		$commentaire2->setArticle($article);
+		$commentaire2->setAuteur('Charles');
+		$commentaire2->setContenu('Arrete avec tes poissons ! e(>_<)');
+		
+		
+		
 		$em=$this->getDoctrine()->getManager();
 		$em->persist($article);
+		$em->persist($commentaire1);
+		$em->persist($commentaire2);
 		try {
 			$em->flush();
 			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);

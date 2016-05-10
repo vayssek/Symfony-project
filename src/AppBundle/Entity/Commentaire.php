@@ -51,7 +51,12 @@ class Commentaire
     
     private  $article;
 
-
+    public function __construct(){
+    
+    	$this->date=new \DateTime();
+    	    
+    }
+    
     /**
      * Get id
      *
