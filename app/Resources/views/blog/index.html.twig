@@ -13,6 +13,9 @@ Index {% endblock %}
 	{%if article.image is not null%}
 	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> 
 	{%endif%}
+	{% for categorie in article.categories %}
+	<p> {{ categorie.titre }}</p>
+	{%endfor%}
 	{%endfor%}
 </ul>
 <{%endblock%}

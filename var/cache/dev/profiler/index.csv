@@ -514,3 +514,15 @@ a530f2,::1,GET,http://localhost/my_project/web/app_dev.php/blog/,1462904411,,404
 df3f72,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/11,1462951657,,200
 e3181c,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/16,1462953754,,302
 4ef1bf,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462953754,,200
+aa3d32,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462954371,,200
+79f7fb,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/1,1462954378,febf6f,200
+febf6f,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/1,1462954378,,500
+115263,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462954380,8eb61d,200
+8eb61d,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462954380,,200
+18725d,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462954380,8b263f,200
+8b263f,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462954380,,200
+344517,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail,1462954391,48bc1c,200
+48bc1c,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail,1462954391,,500
+e06fe1,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/1,1462954394,06ce9e,200
+06ce9e,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/1,1462954394,,500
+0498eb,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462954395,,200

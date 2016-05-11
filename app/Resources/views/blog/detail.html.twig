@@ -1,6 +1,9 @@
 <article>
 <h1>
 {{article.titre}}
+	{% for categorie in article.categories %}
+	{{ categorie.titre }}
+	{%endfor%}
 </h1>
 <p>{{article.contenu}}<br>
 <em>{{article.date|date('d-m-Y')}}</em>
