@@ -1,4 +1,4 @@
-<h1>Derniers articles</h1>
+<h1>Derniers articles publiés sur le blog</h1>
 {% for article in articles %}
 	<li>{{article.titre}}</li> 
 		<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>

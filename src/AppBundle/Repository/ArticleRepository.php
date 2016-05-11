@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Categorie;
+use Symfony\Component\Validator\Constraints\Collection;
+
 /**
  * ArticleRepository
  *
@@ -15,13 +18,34 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 		/*C'est la même chose qu'en dessous mais en plus développé.
 		 * $qb=$this->_em->createQueryBuilder()->select('a')->from($this->_entityName,'a');
 		 */
+		$pub=1;
+		/*Création d'un paramètre pour le protéger de toutes inclusions SQL en utilisant une définition du paramètre
+		 * dans la requête
+		*/
 		
 		$qb=$this->createQueryBuilder("a")->leftJoin('a.image', 'i')->addSelect('i')->leftJoin('a.categories','c')
-		->addSelect('c')->orderBy('a.date','DESC');
+		->addSelect('c')->where('a.publication =:pub')->setParameter('pub', $pub)->orderBy('a.date','DESC');
 		
 		$query=$qb->getQuery();
-		return $query->getResult();
-		//return $query->getArrayResult();
+		return $query->getResult();//retourne un tableau d'objet
+		//return $query->getArrayResult();//retourne un tableau de tableau
+	}
+	
+	public function getArticlesByCat($categorie){
+		/*C'est la même chose qu'en dessous mais en plus développé.
+		 * $qb=$this->_em->createQueryBuilder()->select('a')->from($this->_entityName,'a');
+		 */
+		$pub=1;
+		/*Création d'un paramètre pour le protéger de toutes inclusions SQL en utilisant une définition du paramètre
+		 * dans la requête
+		 */
+		
+		$qb=$this->createQueryBuilder("a")->leftJoin('a.categories','c')->addSelect('c')
+		->where('a.publication =:pub')->andWhere('c=:cat')->setParameter('pub', $pub)->setParameter('cat', $categorie)
+		->orderBy('a.date','DESC');
+		$query=$qb->getQuery();
+		return $query->getResult();//retourne un tableau d'objet
+		//return $query->getArrayResult();//retourne un tableau de tableau
 	}
 }
 

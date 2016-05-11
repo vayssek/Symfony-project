@@ -25,7 +25,7 @@ class BlogController extends Controller {
 		// replace this example code with whatever you need
 		
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
-		$articles=$repA->findAll();
+		$articles=$repA->getArticlesIndex();
 		return $this->render ( 'blog/index.html.twig', [ 
 				'articles' => $articles,
 				'base_dir' => realpath ( $this->getParameter ( 'kernel.root_dir' ) . '/..' ) 
@@ -144,10 +144,13 @@ class BlogController extends Controller {
 	 */
 	public function categorieAction(Request $request,$id) {
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Categorie');
-		$categories=$repA->find($id);
-		$articles=$categories->getArticles();
+		$categorie=$repA->find($id);
+		
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$articles=$repA->getArticlesByCat($categorie);
 		return $this->render ( 'blog/categorie.html.twig', [
 				'articles' => $articles,
+				'categorie'=>$categorie
 				]);
 	}
 	

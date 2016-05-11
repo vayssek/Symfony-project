@@ -15,11 +15,11 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a = $this->env->getExtension("native_profiler");
-        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a->enter($__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/footer.html.twig"));
+        $__internal_a90793ccbca18081cffb873f96f639d85752a39877c1b751b2d801d86bfd17fe = $this->env->getExtension("native_profiler");
+        $__internal_a90793ccbca18081cffb873f96f639d85752a39877c1b751b2d801d86bfd17fe->enter($__internal_a90793ccbca18081cffb873f96f639d85752a39877c1b751b2d801d86bfd17fe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/footer.html.twig"));
 
         // line 1
-        echo "<h1>Derniers articles</h1>
+        echo "<h1>Derniers articles publiés sur le blog</h1>
 ";
         // line 2
         $context['_parent'] = $context;
@@ -39,7 +39,7 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a->leave($__internal_4f7d732603e04445ad4bd2b9f69a960e6ef5ec95a87a0b051972b0a27c22f25a_prof);
+        $__internal_a90793ccbca18081cffb873f96f639d85752a39877c1b751b2d801d86bfd17fe->leave($__internal_a90793ccbca18081cffb873f96f639d85752a39877c1b751b2d801d86bfd17fe_prof);
 
     }
 
@@ -58,7 +58,7 @@ class __TwigTemplate_674256df7d46aa70340c0e847f188cdf4e211aad75c233dd62f9cc4fc3d
         return array (  34 => 4,  29 => 3,  25 => 2,  22 => 1,);
     }
 }
-/* <h1>Derniers articles</h1>*/
+/* <h1>Derniers articles publiés sur le blog</h1>*/
 /* {% for article in articles %}*/
 /* 	<li>{{article.titre}}</li> */
 /* 		<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>*/
