@@ -63,6 +63,14 @@ class Article
      */
     private $image;
     
+    /**
+     * 
+     *
+     * @ORM\ManyToMany(targetEntity="Categorie")
+     */
+    private $categories;
+    
+    
     
     public function __construct(){
 

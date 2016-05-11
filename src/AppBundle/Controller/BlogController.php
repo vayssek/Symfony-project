@@ -9,6 +9,7 @@ use AppBundle\Entity\Article;
 use Doctrine\DBAL\Driver\PDOException;
 use AppBundle\Entity\Image;
 use AppBundle\Entity\Commentaire;
+use AppBundle\Entity\Categorie;
 /**
  * 
  * @Route {"/blog"}
@@ -31,6 +32,7 @@ class BlogController extends Controller {
 		] );
 		
 	}
+	//Création de la route pour la prochaine action qui sera disponible dans le blog
 	/**
 	 * @Route("/blog/detail/{id}",name="blog_detail",defaults={"id":1},requirements={"id":"\d+"})
 	 * )
@@ -39,7 +41,7 @@ class BlogController extends Controller {
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
 		$repC=$this->getDoctrine()->getManager()->getRepository('AppBundle:Commentaire');
 		$article=$repA->find($id);
-		$commentaires=$repC->findBy(['article'=>$article],array('date'=>'desc'),3,0);
+		$commentaires=$repC->findBy(['article'=>$article],array('date'=>'desc'));
 		return $this->render ( 'blog/detail.html.twig', [ 
 				'article' => $article ,
 				'commentaires'=>$commentaires
@@ -87,12 +89,21 @@ class BlogController extends Controller {
 		$commentaire2->setAuteur('Charles');
 		$commentaire2->setContenu('Arrete avec tes poissons ! e(>_<)');
 		
+		$categorie1=new Categorie();
+		$categorie1->setTitre('Générale');
 		
+		$categorie2=new Categorie();
+		$categorie2->setTitre('Informatique');
+		
+		$article->addCategory($categorie1);
+		$article->addCategory($categorie2);		
 		
 		$em=$this->getDoctrine()->getManager();
 		$em->persist($article);
 		$em->persist($commentaire1);
 		$em->persist($commentaire2);
+		$em->persist($categorie1);
+		$em->persist($categorie2);
 		try {
 			$em->flush();
 			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
@@ -100,7 +111,6 @@ class BlogController extends Controller {
 			catch (\PDOException $e) {
 			
 		}
-	
 		
 		return $this->render ( 'blog/ajout.html.twig', [
 		'article'=>$article,]);

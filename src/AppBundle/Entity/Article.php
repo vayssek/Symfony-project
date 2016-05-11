@@ -63,11 +63,20 @@ class Article
      */
     private $image;
     
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Categorie")
+     */
+    private $categories;
+    
+    
     
     public function __construct(){
 
     	$this->date=new \DateTime();
     	$this->publication=true;
+    	$this->categories=new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -222,5 +231,39 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     *
+     * @return Article
+     */
+    public function addCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     */
+    public function removeCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

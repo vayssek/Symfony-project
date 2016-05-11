@@ -511,3 +511,6 @@ ebb715,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path
 a530f2,::1,GET,http://localhost/my_project/web/app_dev.php/blog/,1462904411,,404
 5f0926,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462904414,3ba09c,200
 3ba09c,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462904414,,200
+df3f72,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/11,1462951657,,200
+e3181c,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/16,1462953754,,302
+4ef1bf,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462953754,,200
