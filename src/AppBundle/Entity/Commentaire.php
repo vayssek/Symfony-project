@@ -45,7 +45,7 @@ class Commentaire
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article")
+     * @ORM\ManyToOne(targetEntity="Article",inversedBy="commentaires")
      * @ORM\JoinColumn(nullable=false)
      */
     

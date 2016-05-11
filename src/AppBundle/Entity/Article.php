@@ -70,6 +70,14 @@ class Article
      */
     private $categories;
     
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OnetoMany(targetEntity="Commentaire",mappedBy="article",cascade={"remove"})
+     */
+    private $commentaires;
+    
+    
     
     
     public function __construct(){
@@ -77,6 +85,7 @@ class Article
     	$this->date=new \DateTime();
     	$this->publication=true;
     	$this->categories=new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->commentaires=new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -265,5 +274,39 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     *
+     * @return Article
+     */
+    public function addCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires[] = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     */
+    public function removeCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

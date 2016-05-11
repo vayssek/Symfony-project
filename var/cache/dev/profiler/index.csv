@@ -548,3 +548,4 @@ e06558,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie,146296
 01ca61,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462960403,,500
 443349,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462960452,,200
 054158,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462960499,,200
+928fbe,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462965384,,200

@@ -45,13 +45,18 @@ class Commentaire
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article")
+     * @ORM\ManyToOne(targetEntity="Article",inversedBy="commentaires")
      * @ORM\JoinColumn(nullable=false)
      */
     
     private  $article;
 
-
+    public function __construct(){
+    
+    	$this->date=new \DateTime();
+    	    
+    }
+    
     /**
      * Get id
      *
@@ -133,5 +138,28 @@ class Commentaire
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Commentaire
+     */
+    public function setArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \AppBundle\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+}
