@@ -15,8 +15,8 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_de6a55a1c52795a4eaaf3cdcbed83b4f4c060cceaad1678ead2623a16b4435e0 = $this->env->getExtension("native_profiler");
-        $__internal_de6a55a1c52795a4eaaf3cdcbed83b4f4c060cceaad1678ead2623a16b4435e0->enter($__internal_de6a55a1c52795a4eaaf3cdcbed83b4f4c060cceaad1678ead2623a16b4435e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
+        $__internal_34fb37d18989556ba908a9d15dd19052592e910b1399b2088a5cc2101ac74cc5 = $this->env->getExtension("native_profiler");
+        $__internal_34fb37d18989556ba908a9d15dd19052592e910b1399b2088a5cc2101ac74cc5->enter($__internal_34fb37d18989556ba908a9d15dd19052592e910b1399b2088a5cc2101ac74cc5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
 
         // line 1
         echo "<article>
@@ -53,7 +53,7 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
         // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_supprimer", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Supprimer article &rarr;</a>
-\t<a class=\"btn bnt-warning\" href=\"";
+\t<a class=\"btn bnt-success\" href=\"";
         // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_modif", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Modifier article &rarr;</a>
@@ -79,7 +79,7 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
         echo "</p>
 </article>";
         
-        $__internal_de6a55a1c52795a4eaaf3cdcbed83b4f4c060cceaad1678ead2623a16b4435e0->leave($__internal_de6a55a1c52795a4eaaf3cdcbed83b4f4c060cceaad1678ead2623a16b4435e0_prof);
+        $__internal_34fb37d18989556ba908a9d15dd19052592e910b1399b2088a5cc2101ac74cc5->leave($__internal_34fb37d18989556ba908a9d15dd19052592e910b1399b2088a5cc2101ac74cc5_prof);
 
     }
 
@@ -108,7 +108,7 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 /* <p>{{article.contenu}}<br>*/
 /* <em>{{article.date|date('d-m-Y')}}</em>*/
 /* 	<a class="btn bnt-warning" href="{{ path('blog_supprimer',{id:article.id})}}">Supprimer article &rarr;</a>*/
-/* 	<a class="btn bnt-warning" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>*/
+/* 	<a class="btn bnt-success" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>*/
 /* {% for commentaire in commentaires %}*/
 /* <h3>{{commentaire.contenu}} {{article.date|date('d-m-Y')}} {{ commentaire.auteur }}</h3>*/
 /* {% endfor %}*/

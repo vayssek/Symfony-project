@@ -549,3 +549,12 @@ e06558,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie,146296
 443349,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462960452,,200
 054158,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462960499,,200
 928fbe,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462965384,,200
+edfd3d,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1462966639,,200
+3e3a9c,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462966968,89ca73,200
+89ca73,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462966968,,200
+db5b67,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462967701,,200
+b05b13,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462967946,94bbe7,200
+94bbe7,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462967946,,200
+ce81ef,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/12,1462967951,,200
+94165b,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462968143,0f152f,200
+0f152f,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462968143,,200

@@ -10,4 +10,18 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getArticlesIndex(){
+		
+		/*C'est la même chose qu'en dessous mais en plus développé.
+		 * $qb=$this->_em->createQueryBuilder()->select('a')->from($this->_entityName,'a');
+		 */
+		
+		$qb=$this->createQueryBuilder("a")->leftJoin('a.image', 'i')->addSelect('i')->leftJoin('a.categories','c')
+		->addSelect('c')->orderBy('a.date','DESC');
+		
+		$query=$qb->getQuery();
+		return $query->getResult();
+		//return $query->getArrayResult();
+	}
 }
+
