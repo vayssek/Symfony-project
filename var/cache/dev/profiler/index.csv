@@ -507,3 +507,7 @@ ebb715,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path
 3b978e,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462892333,,200
 94d8af,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/10,1462892337,,200
 14ca49,::1,GET,http://localhost/my_project/web/app_dev.php/blog/detail/11,1462892412,,200
+3b272b,::1,GET,http://localhost/my_project/web/app_dev.php/blog/,1462904411,a530f2,200
+a530f2,::1,GET,http://localhost/my_project/web/app_dev.php/blog/,1462904411,,404
+5f0926,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1462904414,3ba09c,200
+3ba09c,::1,GET,http://localhost/my_project/web/app_dev.php/blog,1462904414,,200
