@@ -138,6 +138,20 @@ class BlogController extends Controller {
 		]);
 	}
 	
+	/**
+	 * @Route("/blog/categorie/{id}",name="blog_categorie",defaults={"id":1}, requirements={"id":"\d+"})
+	 * )
+	 */
+	public function categorieAction(Request $request,$id) {
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Categorie');
+		$categories=$repA->find($id);
+		$articles=$categories->getArticles();
+		return $this->render ( 'blog/categorie.html.twig', [
+				'articles' => $articles,
+				]);
+	}
+	
+	
 	public function footerAction(Request $request) {
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
 		$articles=$repA->findBy(['publication'=>true],array('date'=>'desc'),3,0);

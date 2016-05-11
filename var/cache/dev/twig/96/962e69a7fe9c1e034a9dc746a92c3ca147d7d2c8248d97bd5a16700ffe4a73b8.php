@@ -22,20 +22,20 @@ class __TwigTemplate_88e6440f13fd935eb87df2f5353600317c0bcb493ac016925303d20491a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e97fc53531a7e4abe6c3b290d64623e2ee18fc56257d55fcace48f66b543b6b8 = $this->env->getExtension("native_profiler");
-        $__internal_e97fc53531a7e4abe6c3b290d64623e2ee18fc56257d55fcace48f66b543b6b8->enter($__internal_e97fc53531a7e4abe6c3b290d64623e2ee18fc56257d55fcace48f66b543b6b8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
+        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a = $this->env->getExtension("native_profiler");
+        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a->enter($__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e97fc53531a7e4abe6c3b290d64623e2ee18fc56257d55fcace48f66b543b6b8->leave($__internal_e97fc53531a7e4abe6c3b290d64623e2ee18fc56257d55fcace48f66b543b6b8_prof);
+        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a->leave($__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_ec0712dff99dc06a86b922d9500f1ffeaa568fbdb6a31000a38ac0389e54fe58 = $this->env->getExtension("native_profiler");
-        $__internal_ec0712dff99dc06a86b922d9500f1ffeaa568fbdb6a31000a38ac0389e54fe58->enter($__internal_ec0712dff99dc06a86b922d9500f1ffeaa568fbdb6a31000a38ac0389e54fe58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0 = $this->env->getExtension("native_profiler");
+        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0->enter($__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " 
 ";
@@ -44,15 +44,15 @@ class __TwigTemplate_88e6440f13fd935eb87df2f5353600317c0bcb493ac016925303d20491a
         echo " -
 Index ";
         
-        $__internal_ec0712dff99dc06a86b922d9500f1ffeaa568fbdb6a31000a38ac0389e54fe58->leave($__internal_ec0712dff99dc06a86b922d9500f1ffeaa568fbdb6a31000a38ac0389e54fe58_prof);
+        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0->leave($__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0_prof);
 
     }
 
     // line 6
     public function block_body($context, array $blocks = array())
     {
-        $__internal_03c196ca23615247575683a36cb944587f399315dc4ac4a520a3df9b2a988581 = $this->env->getExtension("native_profiler");
-        $__internal_03c196ca23615247575683a36cb944587f399315dc4ac4a520a3df9b2a988581->enter($__internal_03c196ca23615247575683a36cb944587f399315dc4ac4a520a3df9b2a988581_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805 = $this->env->getExtension("native_profiler");
+        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805->enter($__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
         echo "
@@ -67,27 +67,12 @@ Index ";
             echo "\t<li>";
             echo twig_escape_filter($this->env, $this->getAttribute($context["article"], "titre", array()), "html", null, true);
             echo "</li> 
-\t<a class=\"btn bnt-warning\" href=\"";
+\t\t";
             // line 12
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_detail", array("id" => $this->getAttribute($context["article"], "id", array()))), "html", null, true);
-            echo "\">Voir &rarr;</a>
-\t";
-            // line 13
-            if ( !(null === $this->getAttribute($context["article"], "image", array()))) {
-                // line 14
-                echo "\t<img src=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "Url", array()), "html", null, true);
-                echo "\" alt=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "alt", array()), "html", null, true);
-                echo "\" width=\"200\"></img> 
-\t";
-            }
-            // line 16
-            echo "\t";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["article"], "categories", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-                // line 17
+                // line 13
                 echo "\t<p> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["categorie"], "titre", array()), "html", null, true);
                 echo "</p>
@@ -96,6 +81,21 @@ Index ";
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categorie'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 15
+            echo "\t<a class=\"btn bnt-warning\" href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_detail", array("id" => $this->getAttribute($context["article"], "id", array()))), "html", null, true);
+            echo "\">Voir &rarr;</a>
+\t";
+            // line 16
+            if ( !(null === $this->getAttribute($context["article"], "image", array()))) {
+                // line 17
+                echo "\t<img src=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "Url", array()), "html", null, true);
+                echo "\" alt=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "alt", array()), "html", null, true);
+                echo "\" width=\"200\"></img> 
+\t";
+            }
             // line 19
             echo "\t";
         }
@@ -106,7 +106,7 @@ Index ";
         echo "</ul>
 <";
         
-        $__internal_03c196ca23615247575683a36cb944587f399315dc4ac4a520a3df9b2a988581->leave($__internal_03c196ca23615247575683a36cb944587f399315dc4ac4a520a3df9b2a988581_prof);
+        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805->leave($__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805_prof);
 
     }
 
@@ -122,7 +122,7 @@ Index ";
 
     public function getDebugInfo()
     {
-        return array (  106 => 20,  100 => 19,  91 => 17,  86 => 16,  78 => 14,  76 => 13,  72 => 12,  67 => 11,  63 => 10,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
+        return array (  106 => 20,  100 => 19,  92 => 17,  90 => 16,  85 => 15,  76 => 13,  72 => 12,  67 => 11,  63 => 10,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {%extends 'blog/layout.html.twig'%}*/
@@ -136,13 +136,13 @@ Index ";
 /* <ul>*/
 /* 	{% for article in articles %}*/
 /* 	<li>{{article.titre}}</li> */
+/* 		{% for categorie in article.categories %}*/
+/* 	<p> {{ categorie.titre }}</p>*/
+/* 	{%endfor%}*/
 /* 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>*/
 /* 	{%if article.image is not null%}*/
 /* 	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> */
 /* 	{%endif%}*/
-/* 	{% for categorie in article.categories %}*/
-/* 	<p> {{ categorie.titre }}</p>*/
-/* 	{%endfor%}*/
 /* 	{%endfor%}*/
 /* </ul>*/
 /* <{%endblock%}*/

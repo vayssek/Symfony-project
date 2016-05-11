@@ -66,7 +66,7 @@ class Article
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Categorie")
+     * @ORM\ManyToMany(targetEntity="Categorie",inversedBy="articles")
      */
     private $categories;
     

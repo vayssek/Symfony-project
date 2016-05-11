@@ -126,6 +126,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_supprimer')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::supprimerAction',));
             }
 
+            // blog_categorie
+            if (0 === strpos($pathinfo, '/blog/categorie') && preg_match('#^/blog/categorie(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_categorie')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::categorieAction',));
+            }
+
         }
 
         // homepage

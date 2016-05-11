@@ -27,6 +27,13 @@ class Categorie
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="categories")
+     */
+    private $articles;
 
 
     /**
@@ -62,5 +69,45 @@ class Categorie
     {
         return $this->titre;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Categorie
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Article $article
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+}

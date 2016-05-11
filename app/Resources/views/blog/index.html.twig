@@ -9,13 +9,13 @@ Index {% endblock %}
 <ul>
 	{% for article in articles %}
 	<li>{{article.titre}}</li> 
+		{% for categorie in article.categories %}
+	<p> {{ categorie.titre }}</p>
+	{%endfor%}
 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>
 	{%if article.image is not null%}
 	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> 
 	{%endif%}
-	{% for categorie in article.categories %}
-	<p> {{ categorie.titre }}</p>
-	{%endfor%}
 	{%endfor%}
 </ul>
 <{%endblock%}

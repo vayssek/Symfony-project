@@ -1,0 +1,9 @@
+<body>
+<h1>Liste des articles</h1>
+<ul>
+	{% for article in articles %}
+	<li>{{article.titre}}</li> 
+	<em>{{article.date|date('d-m-Y')}}</em>
+	{%endfor%}
+	
+</body>
