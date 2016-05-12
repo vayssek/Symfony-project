@@ -10,11 +10,8 @@ use Doctrine\DBAL\Driver\PDOException;
 use AppBundle\Entity\Image;
 use AppBundle\Entity\Commentaire;
 use AppBundle\Entity\Categorie;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+use AppBundle\Form\ArticleType;
 /**
  * 
  * @Route {"/blog"}
@@ -75,19 +72,25 @@ class BlogController extends Controller {
 	public function ajouterAction(Request $request,$id) {
 		//Création de l'entité a crée depuis le formulaire
 		$article =new Article();
-		//Création du formulaire pour créer les attributs de la nouvelle entité
-		$formbuilder=$this->createFormBuilder($article);
-		$formbuilder->add('titre',TextType::class)
-					->add('contenu',TextareaType::class)
-					->add('auteur',TextType::class)
-					->add('date',DateType::class)
-					->add('publication',CheckboxType::class,['required'=>false])
-					->add('submit',SubmitType::class);
-		//envoie du formulaire depuis le formbuilder dans un objet formulaire
-		$form=$formbuilder->getForm();
-// 		$article->setAuteur('moi');
-// 		$article->setContenu('Whoa, ça ressemble a ça !');
-// 		$article->setTitre('Hello World !');
+		//Création du formulaire par l'utilisation d'entité de formulaire ArticleType.php
+		$form=$this->createForm(ArticleType::class,$article);
+		//Verification des données si l'hydratation des propriétés est correct
+		$session=$this->get('session');
+		if ($request->getMethod()=="POST"){
+			$form->handleRequest($request);
+			
+			if($form->isSubmitted()&& $form->isValid()){
+				//$article->SetOwner();
+				$em=$this->getDoctrine()->getManager();
+				$em->persist($article);
+				try {
+					$em->flush();
+					return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
+				} catch (Exception $e) {
+				}
+			}
+		}
+
 		
 // 		$image =new Image();
 // 		$image-> setUrl('http://vignette4.wikia.nocookie.net/fairy-tail/images/c/c5/Fro_GMG.png/revision/latest?cb=20130105210355&path-prefix=fr');
