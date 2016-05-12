@@ -78,6 +78,13 @@ class Article
     private $commentaires;
     
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateModification", type="datetime")
+     */
+    private $dateModification;
+    
     
     
     public function __construct(){
@@ -86,6 +93,7 @@ class Article
     	$this->publication=true;
     	$this->categories=new \Doctrine\Common\Collections\ArrayCollection();
     	$this->commentaires=new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->dateModification=new \DateTime();
     }
     
     /**
@@ -274,5 +282,63 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     *
+     * @return Article
+     */
+    public function addCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires[] = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \AppBundle\Entity\Commentaire $commentaire
+     */
+    public function removeCommentaire(\AppBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Set dateeModification
+     *
+     * @param \DateTime $dateeModification
+     *
+     * @return Article
+     */
+    public function setDateeModification($dateeModification)
+    {
+        $this->datee_Modification = $dateeModification;
+
+        return $this;
+    }
+
+    /**
+     * Get dateeModification
+     *
+     * @return \DateTime
+     */
+    public function getDateeModification()
+    {
+        return $this->datee_Modification;
     }
 }

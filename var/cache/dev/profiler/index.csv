@@ -689,3 +689,7 @@ a9527e,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1463
 5d8a20,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/1,1463039709,,200
 330127,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463039713,e25f25,200
 e25f25,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/2,1463039713,,200
+1c6400,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification/2,1463041703,37b9ab,200
+37b9ab,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification/2,1463041703,,500
+1d8940,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463041782,d28f49,200
+d28f49,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification/4,1463041782,,200
