@@ -29,7 +29,10 @@ class ArticleType extends AbstractType
 						['required'=> false, 'class'=>Categorie::class,
 						'choice_label'=>'titre',
 						'expanded'=>true,
-						'multiple'=>true])
+						'multiple'=>true,
+						'query_builder'=>function($er){
+							$qb=$er->createQueryBuilder("c")->orderBy('c.titre', 'ASC');
+                            return $qb;}])
 				->add('contenu',TextareaType::class)
 				->add('auteur',TextType::class)
 				->add('date',DateType::class)

@@ -779,3 +779,7 @@ eb1929,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout,1463062641
 3842dc,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout,1463062675,,200
 06f9b3,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463063220,0b5544,200
 0b5544,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout,1463063220,,200
+7694a0,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463064471,5b59a2,200
+5b59a2,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout,1463064471,,200
+245a0c,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463064476,090727,200
+090727,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout,1463064476,,200
