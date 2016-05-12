@@ -148,9 +148,15 @@ class BlogController extends Controller {
 		
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
 		$articles=$repA->getArticlesByCat($categorie);
+		
+		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$valeur=$repA->countArticlesByCat($categorie);
+		
+		
 		return $this->render ( 'blog/categorie.html.twig', [
 				'articles' => $articles,
-				'categorie'=>$categorie
+				'categorie'=>$categorie,
+				'nbarticlebycat'=>$valeur
 				]);
 	}
 	

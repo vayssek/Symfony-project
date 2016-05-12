@@ -3,7 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Categorie;
-use Symfony\Component\Validator\Constraints\Collection;
+
 
 /**
  * ArticleRepository
@@ -45,6 +45,23 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 		->orderBy('a.date','DESC');
 		$query=$qb->getQuery();
 		return $query->getResult();//retourne un tableau d'objet
+		//return $query->getArrayResult();//retourne un tableau de tableau
+	}
+	
+	public function countArticlesByCat($categorie){
+		/*C'est la même chose qu'en dessous mais en plus développé.
+		 * $qb=$this->_em->createQueryBuilder()->select('a')->from($this->_entityName,'a');
+		 */
+		$pub=1;
+		/*Création d'un paramètre pour le protéger de toutes inclusions SQL en utilisant une définition du paramètre
+		 * dans la requête
+		 */
+	
+		$qb=$this->createQueryBuilder("a")->leftJoin('a.categories','c')
+		->where('a.publication =:pub')->andWhere('c=:cat')->setParameter('pub', $pub)->setParameter('cat', $categorie)
+		->select('count(a.id)');
+		$valeur=$qb->getQuery()->getSingleScalarResult();
+		return $valeur;
 		//return $query->getArrayResult();//retourne un tableau de tableau
 	}
 }

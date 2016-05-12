@@ -5,6 +5,7 @@
 Index {% endblock %} 
 {%block body%}
 <h1>Liste des articles de la catégorie {{categorie.titre }}</h1>
+<em>(Nombre d'article(s) dans la catégorie : {{ nbarticlebycat }})</em>
 <ul>
 	{% for article in articles %}
 

@@ -1,3 +1,10 @@
+{%extends 'blog/layout.html.twig'%}
+
+{% block title %} 
+{{ parent() }} -
+Index {% endblock %} 
+{%block body%}
+
 <article>
 <h1>
 {{article.titre}}
@@ -14,3 +21,5 @@
 {% endfor %}
 </p>
 </article>
+</ul>
+<{%endblock%}
