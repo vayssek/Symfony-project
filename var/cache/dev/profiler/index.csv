@@ -693,3 +693,13 @@ e25f25,::1,GET,http://localhost/my_project/web/app_dev.php/blog/categorie/2,1463
 37b9ab,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification/2,1463041703,,500
 1d8940,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463041782,d28f49,200
 d28f49,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification/4,1463041782,,200
+db281e,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification,1463047058,b7de75,200
+b7de75,::1,GET,http://localhost/my_project/web/app_dev.php/blog/modification,1463047058,,500
+c74754,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047067,815fae,200
+815fae,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047067,,500
+38cc8f,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047196,7a8c1d,200
+7a8c1d,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047196,,500
+1d4c5d,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463047273,9fa6b1,200
+9fa6b1,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047273,,200
+532d25,127.0.0.1,GET,http://localhost/my_project/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ABlog%253Afooter,1463047307,f53c77,200
+f53c77,::1,GET,http://localhost/my_project/web/app_dev.php/blog/ajout/1,1463047307,,200

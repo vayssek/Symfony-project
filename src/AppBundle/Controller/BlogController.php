@@ -10,6 +10,11 @@ use Doctrine\DBAL\Driver\PDOException;
 use AppBundle\Entity\Image;
 use AppBundle\Entity\Commentaire;
 use AppBundle\Entity\Categorie;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * 
  * @Route {"/blog"}
@@ -68,52 +73,64 @@ class BlogController extends Controller {
 	 * )
 	 */
 	public function ajouterAction(Request $request,$id) {
+		//Création de l'entité a crée depuis le formulaire
 		$article =new Article();
-		$article->setAuteur('moi');
-		$article->setContenu('Whoa, ça ressemble a ça !');
-		$article->setTitre('Hello World !');
+		//Création du formulaire pour créer les attributs de la nouvelle entité
+		$formbuilder=$this->createFormBuilder($article);
+		$formbuilder->add('titre',TextType::class)
+					->add('contenu',TextareaType::class)
+					->add('auteur',TextType::class)
+					->add('date',DateType::class)
+					->add('publication',CheckboxType::class,['required'=>false])
+					->add('submit',SubmitType::class);
+		//envoie du formulaire depuis le formbuilder dans un objet formulaire
+		$form=$formbuilder->getForm();
+// 		$article->setAuteur('moi');
+// 		$article->setContenu('Whoa, ça ressemble a ça !');
+// 		$article->setTitre('Hello World !');
 		
-		$image =new Image();
-		$image-> setUrl('http://vignette4.wikia.nocookie.net/fairy-tail/images/c/c5/Fro_GMG.png/revision/latest?cb=20130105210355&path-prefix=fr');
-		$image->setAlt('Mon image');
+// 		$image =new Image();
+// 		$image-> setUrl('http://vignette4.wikia.nocookie.net/fairy-tail/images/c/c5/Fro_GMG.png/revision/latest?cb=20130105210355&path-prefix=fr');
+// 		$image->setAlt('Mon image');
 		
-		$article->setImage($image);
+// 		$article->setImage($image);
 		
-		$commentaire1= new Commentaire();
-		$commentaire1->setArticle($article);
-		$commentaire1->setAuteur('Happy');
-		$commentaire1->setContenu('Tu aimes le poisson, moi oui !');
+// 		$commentaire1= new Commentaire();
+// 		$commentaire1->setArticle($article);
+// 		$commentaire1->setAuteur('Happy');
+// 		$commentaire1->setContenu('Tu aimes le poisson, moi oui !');
 		
-		$commentaire2= new Commentaire();
-		$commentaire2->setArticle($article);
-		$commentaire2->setAuteur('Charles');
-		$commentaire2->setContenu('Arrete avec tes poissons ! e(>_<)');
+// 		$commentaire2= new Commentaire();
+// 		$commentaire2->setArticle($article);
+// 		$commentaire2->setAuteur('Charles');
+// 		$commentaire2->setContenu('Arrete avec tes poissons ! e(>_<)');
 		
-		$categorie1=new Categorie();
-		$categorie1->setTitre('Générale');
+// 		$categorie1=new Categorie();
+// 		$categorie1->setTitre('Générale');
 		
-		$categorie2=new Categorie();
-		$categorie2->setTitre('Informatique');
+// 		$categorie2=new Categorie();
+// 		$categorie2->setTitre('Informatique');
 		
-		$article->addCategory($categorie1);
-		$article->addCategory($categorie2);		
+// 		$article->addCategory($categorie1);
+// 		$article->addCategory($categorie2);		
 		
-		$em=$this->getDoctrine()->getManager();
-		$em->persist($article);
-		$em->persist($commentaire1);
-		$em->persist($commentaire2);
-		$em->persist($categorie1);
-		$em->persist($categorie2);
-		try {
-			$em->flush();
-			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
-		}
-			catch (\PDOException $e) {
+// 		$em=$this->getDoctrine()->getManager();
+// 		$em->persist($article);
+// 		$em->persist($commentaire1);
+// 		$em->persist($commentaire2);
+// 		$em->persist($categorie1);
+// // 		$em->persist($categorie2);
+// 		try {
+// 			$em->flush();
+// 			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
+// 		}
+// 			catch (\PDOException $e) {
 			
-		}
+// 		}
 		
 		return $this->render ( 'blog/ajout.html.twig', [
-		'article'=>$article,]);
+				//renvoie de la vue du formulaire dans le template twig
+		'form'=>$form->createView(),]);
 	}
 	
 	/**

@@ -1,7 +1,6 @@
 {%extends 'blog/layout.html.twig'%}
 
 {% block body %}
-{% for message in app.session.flashbag.get('info') %}
-<p class="alert arlet-danger">{{ message}}<\p>
-{% endfor %}
-<h2>Ajouter un nouvel article : </h2>
+<h2>Ajouter un article :</h2>
+{% include 'blog/formulaire.html.twig' %}
+{% endblock %}
