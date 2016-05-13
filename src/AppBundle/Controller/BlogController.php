@@ -85,8 +85,11 @@ class BlogController extends Controller {
 				$em->persist($article);
 				try {
 					$em->flush();
+					$session->getFlashBag()->add('info','Article enregistré avec succés');
 					return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
-				} catch (Exception $e) {
+				} catch (\Exception $e) {
+					$session->getFlashBag()->add('info','Erreur(s) dans le formulaire');
+					return $this->redirectToRoute('blog_ajout',['id'=>$article->getId()]);
 				}
 			}
 		}

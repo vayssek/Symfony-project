@@ -5,6 +5,9 @@
 Index {% endblock %} 
 {%block body%}
 
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert alert-success">{{ message }}</p>
+{% endfor %}
 <article>
 <h1>
 {{article.titre}}
@@ -12,7 +15,7 @@ Index {% endblock %}
 	{{ categorie.titre }}
 	{%endfor%}
 </h1>
-<p>{{article.contenu}}<br>
+<p>{{article.contenu|raw}}<br>
 <em>{{article.date|date('d-m-Y')}}</em>
 	<a class="btn bnt-warning" href="{{ path('blog_supprimer',{id:article.id})}}">Supprimer article &rarr;</a>
 	<a class="btn bnt-warning" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>

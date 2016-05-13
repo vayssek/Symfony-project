@@ -22,20 +22,20 @@ class __TwigTemplate_88e6440f13fd935eb87df2f5353600317c0bcb493ac016925303d20491a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a = $this->env->getExtension("native_profiler");
-        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a->enter($__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
+        $__internal_4520f1191b103d2831fc93220e717de448c890765884c343466fa1ba4582b138 = $this->env->getExtension("native_profiler");
+        $__internal_4520f1191b103d2831fc93220e717de448c890765884c343466fa1ba4582b138->enter($__internal_4520f1191b103d2831fc93220e717de448c890765884c343466fa1ba4582b138_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a->leave($__internal_f8dc9d09ee9527a2a4438c30bc25c1dabc365f7b5dfba8f072a745a8df972b9a_prof);
+        $__internal_4520f1191b103d2831fc93220e717de448c890765884c343466fa1ba4582b138->leave($__internal_4520f1191b103d2831fc93220e717de448c890765884c343466fa1ba4582b138_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0 = $this->env->getExtension("native_profiler");
-        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0->enter($__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_70a731156ce1ed9f1f3d14135df6b86bf71cb1992a01e18efbf4870466d981e2 = $this->env->getExtension("native_profiler");
+        $__internal_70a731156ce1ed9f1f3d14135df6b86bf71cb1992a01e18efbf4870466d981e2->enter($__internal_70a731156ce1ed9f1f3d14135df6b86bf71cb1992a01e18efbf4870466d981e2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " 
 ";
@@ -44,15 +44,15 @@ class __TwigTemplate_88e6440f13fd935eb87df2f5353600317c0bcb493ac016925303d20491a
         echo " -
 Index ";
         
-        $__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0->leave($__internal_aa1317f7bbcf18c87ea6aa17b27b49ad3be00a9e9efe3b92f1e6f740be1be1c0_prof);
+        $__internal_70a731156ce1ed9f1f3d14135df6b86bf71cb1992a01e18efbf4870466d981e2->leave($__internal_70a731156ce1ed9f1f3d14135df6b86bf71cb1992a01e18efbf4870466d981e2_prof);
 
     }
 
     // line 6
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805 = $this->env->getExtension("native_profiler");
-        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805->enter($__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f4367570d00e8c9e37ac6a74211afb20cddd9cd69cc0417e33109951c41569b2 = $this->env->getExtension("native_profiler");
+        $__internal_f4367570d00e8c9e37ac6a74211afb20cddd9cd69cc0417e33109951c41569b2->enter($__internal_f4367570d00e8c9e37ac6a74211afb20cddd9cd69cc0417e33109951c41569b2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
         echo "
@@ -89,11 +89,12 @@ Index ";
             // line 16
             if ( !(null === $this->getAttribute($context["article"], "image", array()))) {
                 // line 17
-                echo "\t<img src=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "Url", array()), "html", null, true);
-                echo "\" alt=\"";
+                echo "\t<img src=";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "url", array()), "html", null, true);
+                echo " alt=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "alt", array()), "html", null, true);
-                echo "\" width=\"200\"></img> 
+                echo "\" width=\"300\"></img> 
 \t";
             }
             // line 19
@@ -106,7 +107,7 @@ Index ";
         echo "</ul>
 <";
         
-        $__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805->leave($__internal_4dde7f0c0874c3ce7f088ee31d21eb1306e8bcaaf8b9b9046c85456c13e35805_prof);
+        $__internal_f4367570d00e8c9e37ac6a74211afb20cddd9cd69cc0417e33109951c41569b2->leave($__internal_f4367570d00e8c9e37ac6a74211afb20cddd9cd69cc0417e33109951c41569b2_prof);
 
     }
 
@@ -122,7 +123,7 @@ Index ";
 
     public function getDebugInfo()
     {
-        return array (  106 => 20,  100 => 19,  92 => 17,  90 => 16,  85 => 15,  76 => 13,  72 => 12,  67 => 11,  63 => 10,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
+        return array (  107 => 20,  101 => 19,  92 => 17,  90 => 16,  85 => 15,  76 => 13,  72 => 12,  67 => 11,  63 => 10,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {%extends 'blog/layout.html.twig'%}*/
@@ -141,7 +142,7 @@ Index ";
 /* 	{%endfor%}*/
 /* 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>*/
 /* 	{%if article.image is not null%}*/
-/* 	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> */
+/* 	<img src={{asset('images/')}}{{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> */
 /* 	{%endif%}*/
 /* 	{%endfor%}*/
 /* </ul>*/

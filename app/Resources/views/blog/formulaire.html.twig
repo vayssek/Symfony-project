@@ -1,3 +1,4 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' 'blog/textarea_ckeditor.html.twig'%}
 
 {{ form_start(form) }}
 
@@ -5,7 +6,6 @@
 {{ form_widget(form.auteur) }}<br>
 {{ form_errors(form.auteur) }}<br>
 {{ form_row(form.auteur) }}<hr>
-
 {{ form_label(form.titre,
 	"Entrez le titre de l'article",
 	{'label_attr':{'class':'maclasse','title':'Le titre'}})}}<br>
@@ -14,10 +14,10 @@
 {{ form_errors(form.titre) }}<br>
 
 {{ form_label(form.contenu,"Contenu") }}<br>
-{{ form_widget(form.contenu,
-{'attr':{'placeholder':'Ecrivez votre contenu !'}}) }}<br>
+{{ form_widget(form.contenu)}}
 {{ form_errors(form.contenu) }}<br>
 
 {#{ form_widget(form) }} Affichage du formulaire sans modification de la mise en page de base#}
 {{ form_end(form) }}
+
 

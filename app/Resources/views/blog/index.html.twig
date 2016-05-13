@@ -14,7 +14,7 @@ Index {% endblock %}
 	{%endfor%}
 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>
 	{%if article.image is not null%}
-	<img src="{{article.image.Url}}" alt="{{ article.image.alt }}" width="200"></img> 
+	<img src={{ asset('images/')}}{{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> 
 	{%endif%}
 	{%endfor%}
 </ul>
