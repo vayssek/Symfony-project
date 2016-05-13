@@ -111,9 +111,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_detail')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::detailAction',));
             }
 
-            // blog_modif
-            if (0 === strpos($pathinfo, '/blog/modification') && preg_match('#^/blog/modification(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modif')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifAction',));
+            if (0 === strpos($pathinfo, '/blog/modification')) {
+                // blog_modif
+                if (preg_match('#^/blog/modification(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_blog_modif;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modif')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifAction',));
+                }
+                not_blog_modif:
+
+                // blog_postmodif
+                if (preg_match('#^/blog/modification(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_blog_postmodif;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_postmodif')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifPostAction',));
+                }
+                not_blog_postmodif:
+
             }
 
             // blog_ajout

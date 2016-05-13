@@ -36,7 +36,7 @@ class ArticleType extends AbstractType
 				->add('contenu',TextareaType::class)
 				->add('auteur',TextType::class)
 				->add('date',DateType::class)
-				->add('image',ImageType::class)
+				->add('image',ImageType::class,['required'=>false])
 				->add('publication',CheckboxType::class,['required'=>false])
 				->add('submit',SubmitType::class,['label'=>'Envoyer']);
        

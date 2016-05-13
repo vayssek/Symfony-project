@@ -1,7 +1,15 @@
 {% extends 'blog/layout.html.twig' %}
-	
+
+
 {% block body %}
-	<h2>Modifier l'article {{ id }}</h2>
+
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert alert-success">{{ message }}</p>
+{% endfor %}
+
+	
+<h2>Modifier un article :</h2>
+	{% include 'blog/formulaire.html.twig' %}
 {% endblock %}
 {% block javascripts %}
 <script src="//cdn.ckeditor.com/4.5.9/basic/ckeditor.js"></script>

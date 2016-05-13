@@ -7,11 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Article;
 use Doctrine\DBAL\Driver\PDOException;
-use AppBundle\Entity\Image;
 use AppBundle\Entity\Commentaire;
 use AppBundle\Entity\Categorie;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Form\ArticleType;
+
+
 /**
  * 
  * @Route {"/blog"}
@@ -51,19 +52,49 @@ class BlogController extends Controller {
 	}
 	/**
 	 * @Route("/blog/modification/{id}",name="blog_modif", defaults={"id":1}, requirements={"id":"\d+"})
+	 * @Method("GET")
 	 * )
 	 */
 	public function modifAction(Request $request, $id) {
 		$em=$this->getDoctrine()->getManager();
 		$repA=$em->getRepository('AppBundle:Article');
 		$article=$repA->find($id);
+		//Création du formulaire par l'utilisation d'entité de formulaire ArticleType.php
+		$form=$this->createForm(ArticleType::class,$article);
 		
-		$article->setTitre('Update - '.$article->getTitre());
-		$em->flush();
 		return $this->render ( 'blog/modification.html.twig', [ 
-				'id' => $id
+				'form'=>$form->createView(),
+				'id' => $id,
 		] );
 	}
+	
+	
+	/**
+	 * @Route("/blog/modification/{id}",name="blog_postmodif", defaults={"id":1}, requirements={"id":"\d+"})
+	 * @Method("POST")
+	 * )
+	 */	
+	public function modifPostAction(Request $request, $id) {
+		$em=$this->getDoctrine()->getManager();
+		$repA=$em->getRepository('AppBundle:Article');
+		$article=$repA->find($id);
+		//Création du formulaire par l'utilisation d'entité de formulaire ArticleType.php
+		$form=$this->createForm(ArticleType::class,$article);
+		
+		$form->handleRequest($request);
+		if($form->isSubmitted()&& $form->isValid()){
+			try {
+				$em->flush();
+				$session->getFlashBag()->add('info','Article modifié avec succés');
+				return $this->redirectToRoute('blog_postmodif',['id'=>$article->getId()]);
+			} catch (\Exception $e) {
+				$session->getFlashBag()->add('info','Erreur(s) dans le formulaire, article non modifié');
+				return $this->redirectToRoute('blog_modif',['id'=>$article->getId()]);
+			}
+		}
+		
+	}
+	
 	
 	/**
 	 * @Route("/blog/ajout/{id}",name="blog_ajout",defaults={"id":1}, requirements={"id":"\d+"})
@@ -94,46 +125,6 @@ class BlogController extends Controller {
 			}
 		}
 
-		
-// 		$image =new Image();
-// 		$image-> setUrl('http://vignette4.wikia.nocookie.net/fairy-tail/images/c/c5/Fro_GMG.png/revision/latest?cb=20130105210355&path-prefix=fr');
-// 		$image->setAlt('Mon image');
-		
-// 		$article->setImage($image);
-		
-// 		$commentaire1= new Commentaire();
-// 		$commentaire1->setArticle($article);
-// 		$commentaire1->setAuteur('Happy');
-// 		$commentaire1->setContenu('Tu aimes le poisson, moi oui !');
-		
-// 		$commentaire2= new Commentaire();
-// 		$commentaire2->setArticle($article);
-// 		$commentaire2->setAuteur('Charles');
-// 		$commentaire2->setContenu('Arrete avec tes poissons ! e(>_<)');
-		
-// 		$categorie1=new Categorie();
-// 		$categorie1->setTitre('Générale');
-		
-// 		$categorie2=new Categorie();
-// 		$categorie2->setTitre('Informatique');
-		
-// 		$article->addCategory($categorie1);
-// 		$article->addCategory($categorie2);		
-		
-// 		$em=$this->getDoctrine()->getManager();
-// 		$em->persist($article);
-// 		$em->persist($commentaire1);
-// 		$em->persist($commentaire2);
-// 		$em->persist($categorie1);
-// // 		$em->persist($categorie2);
-// 		try {
-// 			$em->flush();
-// 			return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
-// 		}
-// 			catch (\PDOException $e) {
-			
-// 		}
-		
 		return $this->render ( 'blog/ajout.html.twig', [
 				//renvoie de la vue du formulaire dans le template twig
 		'form'=>$form->createView(),]);
