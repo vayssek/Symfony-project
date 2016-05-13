@@ -11,6 +11,7 @@ use AppBundle\Entity\Commentaire;
 use AppBundle\Entity\Categorie;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Form\ArticleType;
+use AppBundle\Form\CommentaireType;
 
 
 /**
@@ -20,10 +21,15 @@ use AppBundle\Form\ArticleType;
  */
 
 class BlogController extends Controller {
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////// INDEX //////////////////////////////////////////////
+	
 	/**
 	 * @Route("/blog/{page}",name="blog_homepage",defaults={"page":1},requirements={"page":"\d+"})
 	 * )
 	 */
+	
+	
 	public function indexAction(Request $request, $page) {
 		// replace this example code with whatever you need
 		
@@ -36,20 +42,62 @@ class BlogController extends Controller {
 		
 	}
 	//Création de la route pour la prochaine action qui sera disponible dans le blog
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////// Detail //////////////////////////////////////////////
+	
 	/**
 	 * @Route("/blog/detail/{id}",name="blog_detail",defaults={"id":1},requirements={"id":"\d+"})
-	 * )
+	 * @Method("GET")
 	 */
 	public function detailAction(Request $request, $id) {
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
 		$repC=$this->getDoctrine()->getManager()->getRepository('AppBundle:Commentaire');
 		$article=$repA->find($id);
 		$commentaires=$repC->findBy(['article'=>$article],array('date'=>'desc'));
-		return $this->render ( 'blog/detail.html.twig', [ 
+		
+		$commentaire =new Commentaire();
+		$form=$this->createForm(CommentaireType::class,$commentaire);
+		
+		return $this->render ( 'blog/detail.html.twig', [
+				//renvoie de la vue du formulaire dans le template twig
+				'form'=>$form->createView(),
 				'article' => $article ,
-				'commentaires'=>$commentaires
-		] );
+				'commentaires'=>$commentaires,]);
 	}
+	
+	//Création de la route pour la prochaine action qui sera disponible dans le blog
+	/**
+ 	 * @Route("/blog/detail/{id}",name="blog_postdetail",defaults={"id":1},requirements={"id":"\d+"})
+ 	 * @Method("POST")
+	 */
+	public function detailPostAction(Request $request, $id) {
+ 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+		$repC=$this->getDoctrine()->getManager()->getRepository('AppBundle:Commentaire');
+		$article=$repA->find($id);
+	
+		//Création de l'entité a crée depuis le formulaire
+		$commentaire =new Commentaire();
+ 		//Création du formulaire par l'utilisation d'entité de formulaire ArticleType.php
+		$form=$this->createForm(CommentaireType::class,$commentaire);
+		//Verification des données si l'hydratation des propriétés est correct
+ 		$form->handleRequest($request);
+ 		$session=$this->get('session');
+ 		if($form->isSubmitted()&& $form->isValid()){
+			$em=$this->getDoctrine()->getManager();
+			$commentaire->setArticle($article);
+ 			$em->persist($commentaire);
+			try {
+ 			$em->flush();
+ 			$session->getFlashBag()->add('info','Commentaire enregistré avec succés');
+ 			return $this->redirectToRoute('blog_postdetail',['id'=>$article->getId()]);
+ 			} catch (\Exception $e) {
+ 				$session->getFlashBag()->add('info','Erreur(s) dans le formulaire');
+ 				return $this->redirectToRoute('blog_detail',['id'=>$article->getId()]);
+ 				}
+ 				}
+ 	}
+ 	
 	/**
 	 * @Route("/blog/modification/{id}",name="blog_modif", defaults={"id":1}, requirements={"id":"\d+"})
 	 * @Method("GET")
@@ -82,6 +130,7 @@ class BlogController extends Controller {
 		$form=$this->createForm(ArticleType::class,$article);
 		
 		$form->handleRequest($request);
+		$session=$this->get('session');
 		if($form->isSubmitted()&& $form->isValid()){
 			try {
 				$em->flush();

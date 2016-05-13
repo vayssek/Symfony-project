@@ -22,20 +22,20 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_16d32e4f31e775cd1e8db0acb1bfa0b296e937857c134c3e544e356b458718c8 = $this->env->getExtension("native_profiler");
-        $__internal_16d32e4f31e775cd1e8db0acb1bfa0b296e937857c134c3e544e356b458718c8->enter($__internal_16d32e4f31e775cd1e8db0acb1bfa0b296e937857c134c3e544e356b458718c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
+        $__internal_32a269b514949f1d93783ccb2d1c655c0538b864e3bfd5854006afc71bfbb548 = $this->env->getExtension("native_profiler");
+        $__internal_32a269b514949f1d93783ccb2d1c655c0538b864e3bfd5854006afc71bfbb548->enter($__internal_32a269b514949f1d93783ccb2d1c655c0538b864e3bfd5854006afc71bfbb548_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_16d32e4f31e775cd1e8db0acb1bfa0b296e937857c134c3e544e356b458718c8->leave($__internal_16d32e4f31e775cd1e8db0acb1bfa0b296e937857c134c3e544e356b458718c8_prof);
+        $__internal_32a269b514949f1d93783ccb2d1c655c0538b864e3bfd5854006afc71bfbb548->leave($__internal_32a269b514949f1d93783ccb2d1c655c0538b864e3bfd5854006afc71bfbb548_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_158b03e3aadb78ae0edd8ea2b2b5defc74e9d5a88053bf6f3242915dfe9bb46b = $this->env->getExtension("native_profiler");
-        $__internal_158b03e3aadb78ae0edd8ea2b2b5defc74e9d5a88053bf6f3242915dfe9bb46b->enter($__internal_158b03e3aadb78ae0edd8ea2b2b5defc74e9d5a88053bf6f3242915dfe9bb46b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_396d2a988ea14cc83cce6a8da519393f3a5110165fca9effceddc8452ab9b2f3 = $this->env->getExtension("native_profiler");
+        $__internal_396d2a988ea14cc83cce6a8da519393f3a5110165fca9effceddc8452ab9b2f3->enter($__internal_396d2a988ea14cc83cce6a8da519393f3a5110165fca9effceddc8452ab9b2f3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " 
 ";
@@ -44,15 +44,15 @@ class __TwigTemplate_ba72202ffeab661641339807ee1e24377e1707a3562b7e6545c9b74a373
         echo " -
 Index ";
         
-        $__internal_158b03e3aadb78ae0edd8ea2b2b5defc74e9d5a88053bf6f3242915dfe9bb46b->leave($__internal_158b03e3aadb78ae0edd8ea2b2b5defc74e9d5a88053bf6f3242915dfe9bb46b_prof);
+        $__internal_396d2a988ea14cc83cce6a8da519393f3a5110165fca9effceddc8452ab9b2f3->leave($__internal_396d2a988ea14cc83cce6a8da519393f3a5110165fca9effceddc8452ab9b2f3_prof);
 
     }
 
     // line 6
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4e315d7cd8d64b2b3ed951c37c25f67954c33d9e000edcc177db5de84e1fdaba = $this->env->getExtension("native_profiler");
-        $__internal_4e315d7cd8d64b2b3ed951c37c25f67954c33d9e000edcc177db5de84e1fdaba->enter($__internal_4e315d7cd8d64b2b3ed951c37c25f67954c33d9e000edcc177db5de84e1fdaba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_a5d83d1b1d3637be0084f662d1b9c76a0b91487d470788bc9f03cae7c4a0e22d = $this->env->getExtension("native_profiler");
+        $__internal_a5d83d1b1d3637be0084f662d1b9c76a0b91487d470788bc9f03cae7c4a0e22d->enter($__internal_a5d83d1b1d3637be0084f662d1b9c76a0b91487d470788bc9f03cae7c4a0e22d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
         echo "
@@ -109,12 +109,18 @@ Index ";
         // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_modif", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Modifier article &rarr;</a>
+\t
+\t";
+        // line 23
+        $this->loadTemplate("blog/commentaireForm.html.twig", "blog/detail.html.twig", 23)->display($context);
+        // line 24
+        echo "\t
 ";
-        // line 22
+        // line 25
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["commentaires"]) ? $context["commentaires"] : $this->getContext($context, "commentaires")));
         foreach ($context['_seq'] as $context["_key"] => $context["commentaire"]) {
-            // line 23
+            // line 26
             echo "<h3>";
             echo twig_escape_filter($this->env, $this->getAttribute($context["commentaire"], "contenu", array()), "html", null, true);
             echo " ";
@@ -127,13 +133,13 @@ Index ";
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['commentaire'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 25
+        // line 28
         echo "</p>
 </article>
 </ul>
 ";
         
-        $__internal_4e315d7cd8d64b2b3ed951c37c25f67954c33d9e000edcc177db5de84e1fdaba->leave($__internal_4e315d7cd8d64b2b3ed951c37c25f67954c33d9e000edcc177db5de84e1fdaba_prof);
+        $__internal_a5d83d1b1d3637be0084f662d1b9c76a0b91487d470788bc9f03cae7c4a0e22d->leave($__internal_a5d83d1b1d3637be0084f662d1b9c76a0b91487d470788bc9f03cae7c4a0e22d_prof);
 
     }
 
@@ -149,7 +155,7 @@ Index ";
 
     public function getDebugInfo()
     {
-        return array (  131 => 25,  118 => 23,  114 => 22,  110 => 21,  106 => 20,  102 => 19,  98 => 18,  95 => 17,  86 => 15,  82 => 14,  78 => 13,  74 => 11,  65 => 9,  61 => 8,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
+        return array (  137 => 28,  124 => 26,  120 => 25,  117 => 24,  115 => 23,  110 => 21,  106 => 20,  102 => 19,  98 => 18,  95 => 17,  86 => 15,  82 => 14,  78 => 13,  74 => 11,  65 => 9,  61 => 8,  58 => 7,  52 => 6,  43 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {%extends 'blog/layout.html.twig'%}*/
@@ -173,6 +179,9 @@ Index ";
 /* <em>{{article.date|date('d-m-Y')}}</em>*/
 /* 	<a class="btn bnt-warning" href="{{ path('blog_supprimer',{id:article.id})}}">Supprimer article &rarr;</a>*/
 /* 	<a class="btn bnt-warning" href="{{ path('blog_modif',{id:article.id})}}">Modifier article &rarr;</a>*/
+/* 	*/
+/* 	{% include 'blog/commentaireForm.html.twig' %}*/
+/* 	*/
 /* {% for commentaire in commentaires %}*/
 /* <h3>{{commentaire.contenu}} {{article.date|date('d-m-Y')}} {{ commentaire.auteur }}</h3>*/
 /* {% endfor %}*/
