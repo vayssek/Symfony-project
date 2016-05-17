@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -24,14 +25,19 @@ class Article
 
     /**
      * @var string
-     *
+	* @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le titre doit être composé d'au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre doit être composé d'au maximum {{ limit }} caractères"
+     *      )
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Le contenu est vide")
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;

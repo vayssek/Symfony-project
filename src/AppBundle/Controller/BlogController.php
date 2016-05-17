@@ -32,11 +32,25 @@ class BlogController extends Controller {
 	
 	public function indexAction(Request $request, $page) {
 		// replace this example code with whatever you need
+		$maxArticles=3;
+		$articles_count = $this->getDoctrine()
+                ->getRepository('AppBundle:Article')
+                ->countArticles();
+		
+		$pagination = array(
+		'page' => $page,
+		'route' => 'blog_homepage',
+		'pages_count' => ceil($articles_count / $maxArticles),
+		'route_params' => array()
+		);
 		
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
-		$articles=$repA->getArticlesIndex();
+		$articles=$repA->getArticlesIndex($page,$maxArticles);
+		
+		
 		return $this->render ( 'blog/index.html.twig', [ 
 				'articles' => $articles,
+				'pagination' => $pagination,
 				'base_dir' => realpath ( $this->getParameter ( 'kernel.root_dir' ) . '/..' ) 
 		] );
 		
