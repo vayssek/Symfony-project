@@ -5,6 +5,8 @@ namespace Kevin\CatalogueBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Kevin\CatalogueBundle\Entity\Categorie;
+use Kevin\CatalogueBundle\Entity\Commentaire;
+use Kevin\CatalogueBundle\Form\CommentaireType;
 
 class CatalogueController extends Controller
 {
@@ -55,12 +57,20 @@ class CatalogueController extends Controller
 	
 	public function detailArticle($id) {
 		$repA=$this->getDoctrine()->getManager()->getRepository('KevinCatalogueBundle:Article');
+		$repC=$this->getDoctrine()->getManager()->getRepository('KevinCatalogueBundle:Commentaire');
 		$article=$repA->find($id);
+		$commentaires=$repC->findBy(['article'=>$article],array('date'=>'desc'));
+		
+		$commentaire =new Commentaire();
+		$form=$this->createForm(CommentaireType::class,$commentaire);
+		
 	
 	
 		return $this->render ( 'KevinCatalogueBundle:Front:detailarticle.html.twig', [
 				//renvoie de la vue du formulaire dans le template twig
+				'form'=>$form->createView(),
 				'article' => $article ,
+				'commentaires'=>$commentaires
 				] );
 	}
 		public function footerAction() {

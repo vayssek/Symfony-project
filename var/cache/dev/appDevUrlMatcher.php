@@ -181,65 +181,130 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            if (0 === strpos($pathinfo, '/catalogue/categorie')) {
-                // Catcategorie_index
-                if (rtrim($pathinfo, '/') === '/catalogue/categorie') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_Catcategorie_index;
-                    }
+            if (0 === strpos($pathinfo, '/catalogue/c')) {
+                if (0 === strpos($pathinfo, '/catalogue/categorie')) {
+                    // Catcategorie_index
+                    if (rtrim($pathinfo, '/') === '/catalogue/categorie') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_Catcategorie_index;
+                        }
 
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'Catcategorie_index');
-                    }
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'Catcategorie_index');
+                        }
 
-                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::indexAction',  '_route' => 'Catcategorie_index',);
+                        return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::indexAction',  '_route' => 'Catcategorie_index',);
+                    }
+                    not_Catcategorie_index:
+
+                    // Catcategorie_new
+                    if ($pathinfo === '/catalogue/categorie/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_Catcategorie_new;
+                        }
+
+                        return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::newAction',  '_route' => 'Catcategorie_new',);
+                    }
+                    not_Catcategorie_new:
+
+                    // Catcategorie_show
+                    if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_Catcategorie_show;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_show')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::showAction',));
+                    }
+                    not_Catcategorie_show:
+
+                    // Catcategorie_edit
+                    if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_Catcategorie_edit;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_edit')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::editAction',));
+                    }
+                    not_Catcategorie_edit:
+
+                    // Catcategorie_delete
+                    if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_Catcategorie_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_delete')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::deleteAction',));
+                    }
+                    not_Catcategorie_delete:
+
                 }
-                not_Catcategorie_index:
 
-                // Catcategorie_new
-                if ($pathinfo === '/catalogue/categorie/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_Catcategorie_new;
+                if (0 === strpos($pathinfo, '/catalogue/commentaire')) {
+                    // Catcommentaire_index
+                    if (rtrim($pathinfo, '/') === '/catalogue/commentaire') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_Catcommentaire_index;
+                        }
+
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'Catcommentaire_index');
+                        }
+
+                        return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CommentaireController::indexAction',  '_route' => 'Catcommentaire_index',);
                     }
+                    not_Catcommentaire_index:
 
-                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::newAction',  '_route' => 'Catcategorie_new',);
-                }
-                not_Catcategorie_new:
+                    // Catcommentaire_new
+                    if ($pathinfo === '/catalogue/commentaire/new') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_Catcommentaire_new;
+                        }
 
-                // Catcategorie_show
-                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_Catcategorie_show;
+                        return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CommentaireController::newAction',  '_route' => 'Catcommentaire_new',);
                     }
+                    not_Catcommentaire_new:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_show')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::showAction',));
-                }
-                not_Catcategorie_show:
+                    // Catcommentaire_show
+                    if (preg_match('#^/catalogue/commentaire/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_Catcommentaire_show;
+                        }
 
-                // Catcategorie_edit
-                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_Catcategorie_edit;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcommentaire_show')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CommentaireController::showAction',));
                     }
+                    not_Catcommentaire_show:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_edit')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::editAction',));
-                }
-                not_Catcategorie_edit:
+                    // Catcommentaire_edit
+                    if (preg_match('#^/catalogue/commentaire/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_Catcommentaire_edit;
+                        }
 
-                // Catcategorie_delete
-                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_Catcategorie_delete;
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcommentaire_edit')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CommentaireController::editAction',));
                     }
+                    not_Catcommentaire_edit:
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_delete')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::deleteAction',));
+                    // Catcommentaire_delete
+                    if (preg_match('#^/catalogue/commentaire/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        if ($this->context->getMethod() != 'DELETE') {
+                            $allow[] = 'DELETE';
+                            goto not_Catcommentaire_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcommentaire_delete')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CommentaireController::deleteAction',));
+                    }
+                    not_Catcommentaire_delete:
+
                 }
-                not_Catcategorie_delete:
 
             }
 

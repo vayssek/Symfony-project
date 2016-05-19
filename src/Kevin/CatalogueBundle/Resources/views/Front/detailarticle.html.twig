@@ -12,6 +12,8 @@
 {%if article.image is not null%}
 	<img src={{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> 
 	{%endif%}
-
+<hr></hr>
+<h1>Commentaire</h1>
+{% include 'KevinCatalogueBundle:commentaire:new.html.twig' %}	
 </ul>
 {%endblock%}

@@ -57,6 +57,13 @@ class Article
      * @ORM\OneToOne(targetEntity="Image",cascade={"persist","remove"})
      */
     private $image;
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Commentaire",mappedBy="article",cascade={"remove"})
+     */
+    private $commentaires;
 
 
     /**
@@ -146,6 +153,7 @@ class Article
     public function __construct()
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -204,5 +212,39 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add commentaire
+     *
+     * @param \Kevin\CatalogueBundle\Entity\Commentaire $commentaire
+     *
+     * @return Article
+     */
+    public function addCommentaire(\Kevin\CatalogueBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires[] = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaire
+     *
+     * @param \Kevin\CatalogueBundle\Entity\Commentaire $commentaire
+     */
+    public function removeCommentaire(\Kevin\CatalogueBundle\Entity\Commentaire $commentaire)
+    {
+        $this->commentaires->removeElement($commentaire);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }
