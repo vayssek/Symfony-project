@@ -1,5 +1,4 @@
-{% extends 'blog/layout.html.twig' %}
-
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Categorie</h1>
@@ -19,10 +18,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_categorie_index') }}">Back to the list</a>
+            <a href="{{ path('catalogue_categorie_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_categorie_edit', { 'id': categorie.id }) }}">Edit</a>
+            <a href="{{ path('catalogue_categorie_edit', { 'id': categorie.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

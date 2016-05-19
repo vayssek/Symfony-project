@@ -46,7 +46,11 @@ class BlogController extends Controller {
 		
 		$repA=$this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
 		$articles=$repA->getArticlesIndex($page,$maxArticles);
-		
+		$extrait=$this->get('vaysse.extrait');
+		foreach ($articles as $article){
+			$article->setExtrait(
+					$extrait->getExtrait($article->getContenu()));
+		}
 		
 		return $this->render ( 'blog/index.html.twig', [ 
 				'articles' => $articles,

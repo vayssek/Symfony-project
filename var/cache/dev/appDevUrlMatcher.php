@@ -100,6 +100,160 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/catalogue')) {
+            if (0 === strpos($pathinfo, '/catalogue/article')) {
+                // Catarticle_index
+                if (rtrim($pathinfo, '/') === '/catalogue/article') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_Catarticle_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'Catarticle_index');
+                    }
+
+                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\ArticleController::indexAction',  '_route' => 'Catarticle_index',);
+                }
+                not_Catarticle_index:
+
+                // Catarticle_new
+                if ($pathinfo === '/catalogue/article/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_Catarticle_new;
+                    }
+
+                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\ArticleController::newAction',  '_route' => 'Catarticle_new',);
+                }
+                not_Catarticle_new:
+
+                // Catarticle_show
+                if (preg_match('#^/catalogue/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_Catarticle_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catarticle_show')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\ArticleController::showAction',));
+                }
+                not_Catarticle_show:
+
+                // Catarticle_edit
+                if (preg_match('#^/catalogue/article/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_Catarticle_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catarticle_edit')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\ArticleController::editAction',));
+                }
+                not_Catarticle_edit:
+
+                // Catarticle_delete
+                if (preg_match('#^/catalogue/article/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_Catarticle_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catarticle_delete')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\ArticleController::deleteAction',));
+                }
+                not_Catarticle_delete:
+
+            }
+
+            // cataloge_homepage
+            if (preg_match('#^/catalogue(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cataloge_homepage')), array (  'page' => 1,  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CatalogueController::indexAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/catalogue/listebycat')) {
+                // catalogue_categoriedetail
+                if (preg_match('#^/catalogue/listebycat(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'catalogue_categoriedetail')), array (  'id' => 1,  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CatalogueController::indexArticleByCat',));
+                }
+
+                // catalogue_articledetail
+                if (0 === strpos($pathinfo, '/catalogue/listebycat/article') && preg_match('#^/catalogue/listebycat/article(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'catalogue_articledetail')), array (  'id' => 1,  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CatalogueController::detailArticle',));
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/catalogue/categorie')) {
+                // Catcategorie_index
+                if (rtrim($pathinfo, '/') === '/catalogue/categorie') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_Catcategorie_index;
+                    }
+
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'Catcategorie_index');
+                    }
+
+                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::indexAction',  '_route' => 'Catcategorie_index',);
+                }
+                not_Catcategorie_index:
+
+                // Catcategorie_new
+                if ($pathinfo === '/catalogue/categorie/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_Catcategorie_new;
+                    }
+
+                    return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::newAction',  '_route' => 'Catcategorie_new',);
+                }
+                not_Catcategorie_new:
+
+                // Catcategorie_show
+                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_Catcategorie_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_show')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::showAction',));
+                }
+                not_Catcategorie_show:
+
+                // Catcategorie_edit
+                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_Catcategorie_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_edit')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::editAction',));
+                }
+                not_Catcategorie_edit:
+
+                // Catcategorie_delete
+                if (preg_match('#^/catalogue/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_Catcategorie_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Catcategorie_delete')), array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\CategorieController::deleteAction',));
+                }
+                not_Catcategorie_delete:
+
+            }
+
+        }
+
+        // kevin_catalogue_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'kevin_catalogue_default_index');
+            }
+
+            return array (  '_controller' => 'Kevin\\CatalogueBundle\\Controller\\DefaultController::indexAction',  '_route' => 'kevin_catalogue_default_index',);
+        }
+
         if (0 === strpos($pathinfo, '/blog')) {
             // blog_homepage
             if (preg_match('#^/blog(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {

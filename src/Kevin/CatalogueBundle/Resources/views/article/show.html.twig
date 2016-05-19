@@ -1,0 +1,33 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+{% block title %} 
+{{ parent() }} - Détail de l'article {% endblock %} 
+{%block body%}
+
+<article>
+<h1>{% for categorie in article.categories %}
+	{{ categorie.titre }}
+	{%endfor%}</h1>
+<h1>Article : {{article.titre}}</h1>
+<h1>Description</h1>
+{{ article.description|raw }}
+<h1>Prix :{{ article.prix }} €</h1>
+
+{%if article.image is not null%}
+	<img src={{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> 
+	{%endif%}
+
+
+    <ul>
+        <li>
+            <a href="{{ path('Catarticle_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('Catarticle_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

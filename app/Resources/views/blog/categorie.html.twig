@@ -11,6 +11,7 @@ Index {% endblock %}
 
 	<li>{{article.titre}} de {{ article.auteur }}</li> 
 	<em>{{article.date|date('d-m-Y')}}</em>
+	{{ extrait( article.contenu )|raw}}
 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>
 	{%endfor%}
 	

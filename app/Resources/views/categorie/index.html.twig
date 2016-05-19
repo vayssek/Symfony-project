@@ -1,5 +1,4 @@
-{% extends 'blog/layout.html.twig' %}
-
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Categorie list</h1>
@@ -15,15 +14,15 @@
         <tbody>
         {% for categorie in categories %}
             <tr>
-                <td><a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td><a href="{{ path('catalogue_categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
                 <td>{{ categorie.titre }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">show</a>
+                            <a href="{{ path('catalogue_categorie_show', { 'id': categorie.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_categorie_edit', { 'id': categorie.id }) }}">edit</a>
+                            <a href="{{ path('catalogue_categorie_edit', { 'id': categorie.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -34,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_categorie_new') }}">Create a new entry</a>
+            <a href="{{ path('catalogue_categorie_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

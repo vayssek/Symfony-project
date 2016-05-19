@@ -1,0 +1,23 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+
+{% block body %}
+    <h1>Categorie : {{ categorie.titre }}</h1>
+    
+     {%if categorie.image is not null%}
+	<img src={{ categorie.image.url }} alt="{{ categorie.image.alt }}" width="300"></img> 
+	{%endif%}
+
+    <ul>
+        <li>
+            <a href="{{ path('Catcategorie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('Catcategorie_edit', { 'id': categorie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

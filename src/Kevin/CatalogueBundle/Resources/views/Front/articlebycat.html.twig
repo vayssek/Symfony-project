@@ -1,0 +1,22 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+
+{% block title %} 
+{{ parent() }} - Catalogue Symfony Version - Listes des articles
+{% endblock %} 
+{%block body%}
+
+<h1>Voici la liste des articles de la catégorie choisie</h1>
+<p> Selectionez l'article désiré pour le voir en détail</p>
+
+{% for article in articles %}
+	<li>{{article.titre}}</li>
+	<p>Prix : {{article.prix}} €</p>
+	{% for categorie in article.categories %}
+	<a class="btn bnt-warning" href="{{ path('catalogue_articledetail',{id:article.id})}}">Voir &rarr;</a>
+    {%endfor%}
+     {%if article.image is not null%}
+	<img src={{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> 
+	{%endif%}
+	{%endfor%}
+</ul>
+{%endblock%}

@@ -1,0 +1,11 @@
+{%extends "base.html.twig"%} 
+{% block title %} 
+{{ parent() }} - Catalogue
+{% endblock %}
+
+{%block layout%}
+{%block body%} {%endblock%}
+<footer>
+{{ render(controller("KevinCatalogueBundle:Catalogue:footer")) }}
+</footer>
+{%endblock%}

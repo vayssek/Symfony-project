@@ -93,6 +93,9 @@ class Article
     private $dateModification;
     
     
+
+    private $extrait;
+    
     
     public function __construct(){
 
@@ -356,4 +359,16 @@ class Article
     public function updateDateModification(){
     	$this->setDateModification(new \DateTime());
     }
+
+    public function setExtrait($extrait)
+    {
+    	$this->extrait = $extrait;
+    	return $this;
+    }
+    
+    
+ 	public function getExtrait()
+ {
+ 	return $this->extrait;
+ }
 }

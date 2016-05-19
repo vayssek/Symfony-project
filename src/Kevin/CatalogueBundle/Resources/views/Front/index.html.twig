@@ -1,0 +1,20 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+
+{% block title %} 
+{{ parent() }} - Catalogue Symfony Version
+{% endblock %} 
+{%block body%}
+
+<h1>Bienvenue sur le catalogue made by symfony</h1>
+<p> Naviguez à travers les différentes catégories pour trouver les produits liées</p>
+
+{% for categorie in categories %}
+	<li>{{categorie.titre}}</li> 
+	<a class="btn bnt-warning" href="{{ path('catalogue_categoriedetail',{id:categorie.id})}}">Voir &rarr;</a>
+     {%if categorie.image is not null%}
+	<img src={{ categorie.image.url }} alt="{{ categorie.image.alt }}" width="300"></img> 
+	{%endif%}
+	{%endfor%}
+</ul>
+{#% include 'blog/pagination.html.twig' %#}
+{%endblock%}

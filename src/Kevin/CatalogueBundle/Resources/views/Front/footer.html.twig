@@ -1,0 +1,8 @@
+<h1>Articles disponibles dans le catalogue</h1>
+{% for article in articles %}
+	<li>{{article.titre}}</li>
+	{%if article.image is not null%}
+	<img src={{ article.image.url }} alt="{{ article.image.alt }}" width="75"></img> 
+	{%endif%} 
+		<a class="btn bnt-warning" href="{{ path('catalogue_articledetail',{id:article.id})}}">Voir &rarr;</a>
+	{% endfor %}

@@ -1,0 +1,17 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+
+{% block title %} 
+{{ parent() }} - Catalogue Symfony Version - Listes des articles - Detail de l'article
+{% endblock %} 
+{%block body%}
+<h1>Article : {{article.titre}}</h1>
+<h1>Description</h1>
+{{ article.description|raw }}
+<h1>Prix :{{ article.prix }} €</h1>
+
+{%if article.image is not null%}
+	<img src={{ article.image.url }} alt="{{ article.image.alt }}" width="300"></img> 
+	{%endif%}
+
+</ul>
+{%endblock%}

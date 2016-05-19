@@ -1,0 +1,29 @@
+{%extends 'KevinCatalogueBundle::layout.html.twig'%}
+
+{% block body %}
+    <h1>Liste des Catégories</h1>
+        {% for categorie in categories %}
+                <a href="{{ path('Catcategorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                {{ categorie.titre }}
+                
+     {%if categorie.image is not null%}
+	<img src={{ categorie.image.url }} alt="{{ categorie.image.alt }}" width="300"></img> 
+	{%endif%}
+                    <ul>
+                        <li>
+                            <a href="{{ path('Catcategorie_show', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('Catcategorie_edit', { 'id': categorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+
+        {% endfor %}
+
+
+    <ul>
+        <li>
+            <a href="{{ path('Catcategorie_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

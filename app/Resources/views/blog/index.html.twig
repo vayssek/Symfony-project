@@ -11,6 +11,7 @@ Index {% endblock %}
 	<li>{{article.titre}}</li> 
 		{% for categorie in article.categories %}
 	<p> {{ categorie.titre }}</p>
+	{{extrait(article.contenu)|raw}}
 	{%endfor%}
 	<a class="btn bnt-warning" href="{{ path('blog_detail',{id:article.id})}}">Voir &rarr;</a>
 	{%if article.image is not null%}
